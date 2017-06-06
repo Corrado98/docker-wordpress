@@ -1,12 +1,18 @@
 version: "2"
 
 services:
+  caddy:
+    build: ./caddy
+    ports:
+      - 98:80 
+      - 443:443
+    links:
+      - wordpress
+  
   wordpress:
     image: wordpress  
     volumes: 
       - ./wordpress/var/www/html:/var/www/html
-    ports:
-      - "8080:80"
     environment:
       WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_USER: root
