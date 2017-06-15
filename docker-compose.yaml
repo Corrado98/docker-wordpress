@@ -1,16 +1,11 @@
 version: "2"
 
 services:
-  caddy:
-    build: ./caddy
-    ports:
-      - 98:80 
-      - 443:443
-    links:
-      - wordpress
-  
+ 
   wordpress:
-    image: wordpress  
+    image: wordpress
+    ports:
+      - "80:80" 
     volumes: 
       - ./wordpress/var/www/html:/var/www/html
     environment:
